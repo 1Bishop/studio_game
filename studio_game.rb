@@ -7,4 +7,5 @@ puts "Let's play a game!"
 3.times do |i|
   puts 3 - i
 end
+
 puts "GO!"
