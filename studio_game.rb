@@ -1,5 +1,4 @@
 class Player
-
   attr_accessor :name
   attr_reader :health
 
@@ -41,7 +40,19 @@ end
 
 
 # Test Code:
+player_1 = Player.new("finn", 60)
+player_2 = Player.new("lucy", 90)
+player_3 = Player.new("jase")
 player_4 = Player.new("alex", 125)
-player_4.roll_die
-player_4.roll_die
 
+players = [player_1, player_2, player_3, player_4]
+puts "There are #{players.size} players in the game:"
+puts "Before Playing:"
+puts players
+puts "---" * 10
+players.each do |player|
+  player.roll_die
+end
+puts "---" * 10
+puts "After Playing:"
+puts players
