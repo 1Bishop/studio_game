@@ -23,14 +23,25 @@ class Player
   def score
     @health + @name.length
   end
+
+  def roll_die
+    number_rolled = rand(1..6)
+    puts "#{@name} rolled a #{number_rolled}."
+    if number_rolled < 3
+      self.drain
+      puts "#{@name} got drained! #{@name}'s health is now #{@health}."
+    elsif number_rolled < 5
+      puts "#{@name} got skipped."
+    else
+      self.boost
+      puts "#{@name} got a boost! #{@name}'s health is now #{@health}."
+    end
+  end
 end
 
 
 # Test Code:
 player_4 = Player.new("alex", 125)
-puts player_4.name
-player_4.name = "Alexander"
-puts player_4.name
-puts player_4.health
-puts player_4.score
-puts player_4
+player_4.roll_die
+player_4.roll_die
+
