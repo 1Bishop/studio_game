@@ -7,6 +7,7 @@ class Player
   def initialize(name, health=100)
     @name = name.capitalize
     @health = health
+    @bonus = 0
   end
 
   def to_s
@@ -22,7 +23,12 @@ class Player
   end
 
   def score
-    @health + @name.length
+    @health + @name.length + @bonus
+  end
+
+  def found_treasure(treasure)
+    puts "#{@name} found a #{treasure.name}"
+    @bonus += treasure.points
   end
 
   def roll_die
