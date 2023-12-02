@@ -14,7 +14,7 @@ game.add_player(player_1)
 game.add_player(player_2)
 game.add_player(player_3)
 game.add_player(player_4)
-game.play
+game.play(2)
 
 # Output:
 #Let's play Winner Takes All!

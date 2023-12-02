@@ -30,9 +30,12 @@ class Game
     end
   end
 
-  def play
+  def play(rounds = 1)
     before_play
-    @players.each(&:roll_die)
+    1.upto(rounds) do |round|
+      puts "Round #{round}:"
+      @players.each(&:roll_die)
+    end
     after_play
   end
 end
