@@ -1,19 +1,7 @@
 # frozen_string_literal: true
-
+require_relative 'treasure_trove'
 class Game
   attr_reader :title
-
-  Treasure = Data.define(:name, :points)
-
-  TREASURES = [
-    Treasure.new("pie", 10),
-    Treasure.new("coin", 25),
-    Treasure.new("flute", 50),
-    Treasure.new("compass", 65),
-    Treasure.new("key", 80),
-    Treasure.new("crown", 90),
-    Treasure.new("star", 100)
-  ]
 
   def initialize(title)
     @title = title.capitalize
@@ -31,7 +19,7 @@ class Game
   def before_play
     puts "\nBefore playing:"
     puts "\nThe following treasures can be found:"
-    TREASURES.each do |treasure|
+    TreasureTrove::TREASURES.each do |treasure|
       puts "A #{treasure.name} is worth #{treasure.points} points"
     end
     @players.each do |player|
@@ -54,7 +42,7 @@ class Game
 
       @players.each do |player|
         player.roll_die
-        player.found_treasure(TREASURES.sample)
+        player.found_treasure(TreasureTrove.random)
       end
 
     end
