@@ -7,11 +7,11 @@ class Player
   def initialize(name, health=100)
     @name = name.capitalize
     @health = health
-    @bonus = 0
+    @treasures = Hash.new(0)
   end
 
   def to_s
-    "I'm #{@name} with a health of #{@health} and a score of #{score}."
+    "I'm #{@name} with a health of #{@health} and a score of #{score}: #{@treasures}"
   end
 
   def boost
@@ -23,12 +23,15 @@ class Player
   end
 
   def score
-    @health + @name.length + @bonus
+    @health + @name.length + @treasures.values.reduce(0, :+)
   end
 
   def found_treasure(treasure)
+    name = treasure.name
+    points = treasure.points
+
     puts "#{@name} found a #{treasure.name}"
-    @bonus += treasure.points
+    @treasures[name] += points
   end
 
   def roll_die

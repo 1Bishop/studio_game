@@ -27,11 +27,15 @@ class Game
     end
   end
 
+  def standings
+    @players.sort_by { |player| -player.score }.each do |player|
+      puts "#{player.name.ljust(20, '.')} #{player.score}"
+    end
+  end
+
   def after_play
     puts "\nAfter playing:"
-    @players.each do |player|
-      puts player
-    end
+    standings
   end
 
   def play(rounds = 1)
