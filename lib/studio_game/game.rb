@@ -12,6 +12,10 @@ class Game
     @players << player
   end
 
+  def players
+    @players
+  end
+
   def before_play
     puts "\nBefore playing:"
     @players.each do |player|
